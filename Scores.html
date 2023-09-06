@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Match Stats Form</title>
+</head>
+<body>
+    <h1>Match Stats Form</h1>
+
+    <form id="matchForm" method="post">
+        <label for="matchDate">Match Date:</label>
+        <input type="date" id="matchDate" name="matchDate" required><br><br>
+        
+        <label for="opponentTeam">Opponent Team:</label>
+        <input type="text" id="opponentTeam" name="opponentTeam" required><br><br>
+        
+        <label for="yourTeamScore">Your Team's Score:</label>
+        <input type="number" id="yourTeamScore" name="yourTeamScore" min="0" required><br><br>
+        
+        <label for="opponentScore">Opponent's Score:</label>
+        <input type="number" id="opponentScore" name="opponentScore" min="0" required><br><br>
+        
+        <div id="scorerFields">
+            <label for="goalScorer1">Goal Scorer 1:</label>
+            <input type="text" id="goalScorer1" name="goalScorer1"><br><br>
+        </div>
+        
+        <div id="assisterFields">
+            <label for="assister1">Assister 1:</label>
+            <input type="text" id="assister1" name="assister1"><br><br>
+        </div>
+        
+        <button type="button" id="addScorer">Add Goal Scorer</button>
+        <button type="button" id="addAssister">Add Assister</button><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        // JavaScript to dynamically add input fields for goal scorers and assisters
+        let nextScorerNumber = 2; // Initialize the next goal scorer number
+        let nextAssisterNumber = 2; // Initialize the next assister number
+        
+        document.getElementById("addScorer").addEventListener("click", function() {
+            const scorerFields = document.getElementById("scorerFields");
+            const newScorerField = document.createElement("div");
+            newScorerField.innerHTML = `<label for="goalScorer${nextScorerNumber}">Goal Scorer ${nextScorerNumber}:</label><input type="text" id="goalScorer${nextScorerNumber}" name="goalScorer${nextScorerNumber}"><br><br>`;
+            scorerFields.appendChild(newScorerField);
+            nextScorerNumber++;
+        });
+
+        document.getElementById("addAssister").addEventListener("click", function() {
+            const assisterFields = document.getElementById("assisterFields");
+            const newAssisterField = document.createElement("div");
+            newAssisterField.innerHTML = `<label for="assister${nextAssisterNumber}">Assister ${nextAssisterNumber}:</label><input type="text" id="assister${nextAssisterNumber}" name="assister${nextAssisterNumber}"><br><br>`;
+            assisterFields.appendChild(newAssisterField);
+            nextAssisterNumber++;
+        });
+    </script>
+</body>
+</html>
